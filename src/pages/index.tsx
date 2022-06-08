@@ -16,22 +16,22 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-white overflow-hidden">
+      <div className="background-radial-gradient overflow-hidden">
         <div className="mx-auto">
           <Header />
 
           <main className="grid grid-cols-2 pt-20 h-screen relative">
             <section className="flex items-center justify-center">
               <div className="sm:text-center lg:text-left p-5">
-                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl flex flex-col">
+                <h1 className="text-4xl tracking-tight font-extrabold text-zinc-50 sm:text-5xl md:text-6xl flex flex-col">
                   <span className="block xl:inline">
                     Procuras um trabalho rápido?
                   </span>
-                  <p className="block text-indigo-600 xl:inline">
+                  <p className="block xl:inline pb-4 font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 ">
                     Aqui é o lugar
                   </p>
                 </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                <p className="mt-3 text-base text-zinc-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                   Na RocketJobs você encontra aquele
                   <span className="text-emphasis">
                     trabalho rápido,
