@@ -1,5 +1,6 @@
 import Image from "next/image";
-import LogoRocketJobs from "@assets/logoRocketJobsWhite.png";
+
+import LogoRocketJobs from "@assets/rocketJobs.png";
 
 export function Header() {
   return (
