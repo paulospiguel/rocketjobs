@@ -16,11 +16,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@app/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
-      "@helpers/*": ["src/helpers/*"],
       "@libs/*": ["src/libs/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@services/*": ["src/services/*"],
+      "@helpers/*": ["src/_helpers/*"],
       "@config/*": ["src/_config/*"],
       "@shared/*": ["src/_shared/*"]
     }
