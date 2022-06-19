@@ -4,7 +4,7 @@ import Logo from "@assets/logo.png";
 
 export default function Footer() {
   return (
-    <footer className="footer items-center p-4 text-neutral-content transparent">
+    <footer className="items-center p-4 footer text-neutral-content transparent">
       <div className="items-center grid-flow-col">
         <Image src={Logo} alt="" height={30} width={25} />
         <p>

@@ -9,3 +9,150 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model ProviderSession {
+  id           String  @id @default(cuid())
+  providerName String
+  userId       String
+  isComplete   Boolean
+
+  User User[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("providers_users")
+}
+
+model User {
+  id       String @id @default(cuid())
+  email    String
+  password String
+  name     String
+  avatar   String
+
+  // Worker            Worker[]
+  // Employer          Employer[]
+  providerSessionId String
+
+  ProviderUser ProviderSession @relation(fields: [providerSessionId], references: [id])
+
+  role Role
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("users")
+}
+
+// model Worker {
+//   id    String  @id @default(cuid())
+//   name  String
+//   email String?
+//   phone String?
+//   idDoc String?
+
+//   userId String
+//   User   User   @relation(fields: [userId], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @default(now())
+
+//   // Subscription Subscription[]
+
+//   @@map("workers")
+// }
+
+// model Employer {
+//   id    String  @id @default(cuid())
+//   name  String
+//   email String?
+//   idDoc String
+
+//   userId String
+//   User   User   @relation(fields: [userId], references: [id])
+
+//   Publication Publication[]
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @default(now())
+
+//   Job Job[]
+//   @@map("employers")
+// }
+
+// model Location {
+//   id      String @id @default(cuid())
+//   name    String
+//   city    String
+//   state   String
+//   country String
+//   geo     Json
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @default(now())
+
+//   Job Job[]
+//   @@map("locations")
+// }
+
+// model Job {
+//   id          String  @id @default(cuid())
+//   title       String
+//   description String?
+//   salary      String?
+//   period      String?
+//   status      Status
+
+//   employerId String
+//   employer   Employer  @relation(fields: [employerId], references: [id])
+//   locationId String
+//   location   Location? @relation(fields: [locationId], references: [id])
+
+//   // subscription Subscription[]
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @default(now())
+
+//   @@map("jobs")
+// }
+
+// model Subscription {
+//   id       String @id @default(cuid())
+//   workerId String
+//   worker   Worker @relation(fields: [workerId], references: [id])
+//   jobId    String
+//   job      Job    @relation(fields: [jobId], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @default(now())
+
+//   @@map("subscriptions")
+// }
+
+// model Publication {
+//   id      String @id @default(cuid())
+//   title   String
+//   content String
+
+//   employerId String
+//   author     Employer @relation(fields: [employerId], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @default(now())
+
+//   @@map("publications")
+// }
+
+enum Role {
+  admin
+  worker
+  employer
+}
+
+// enum Status {
+//   apen
+//   closed
+//   canceled
+//   pending
+// }

@@ -1,26 +1,28 @@
 import { ReactElement } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
-import Workers from "@assets/workers.jpg";
+import Workers from "@assets/images/workers.jpg";
+import Cookies from "@components/Cookies";
 import HorizontalLayout from "@components/Layouts/Horizontal";
 import SEO from "@components/SEO";
 
 function Home() {
   return (
-    <>
+    <HorizontalLayout>
       <SEO
         title="Home"
         description="Página inicial da rocketJobs | Frellas for you"
       />
-      <section className="grid grid-cols-2 pt-20 h-screen relative">
+      <section className="relative grid h-screen grid-cols-2">
         <section className="flex items-center justify-center">
-          <div className="sm:text-center lg:text-left p-5">
-            <h1 className="text-4xl tracking-tight font-extrabold text-zinc-50 sm:text-5xl md:text-6xl flex flex-col">
+          <div className="p-5 sm:text-center lg:text-left">
+            <h1 className="flex flex-col text-4xl font-extrabold tracking-tight text-zinc-50 sm:text-5xl md:text-6xl">
               <span className="block xl:inline">
                 Procuras um trabalho rápido?
               </span>
-              <p className="block xl:inline pb-4 font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 ">
+              <p className="block pb-4 text-6xl font-extrabold text-transparent xl:inline bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 ">
                 Aqui é o lugar
               </p>
             </h1>
@@ -36,20 +38,18 @@ function Home() {
             </p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                >
-                  Quero oferecer trabalho
-                </a>
+                <Link href="/login?brand">
+                  <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                    Quero oferecer trabalho
+                  </a>
+                </Link>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
-                >
-                  Sou um trabalhador
-                </a>
+                <Link href="/login?worker">
+                  <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-indigo-700 bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                    Sou um trabalhador
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -63,12 +63,16 @@ function Home() {
           />
         </section>
       </section>
-    </>
+
+      <Cookies />
+    </HorizontalLayout>
   );
 }
 
-Home.getLayout = (page: ReactElement) => (
-  <HorizontalLayout>{page}</HorizontalLayout>
-);
+export const getServerSideProps = async (ctx: any) => {
+  return {
+    props: {},
+  };
+};
 
 export default Home;
